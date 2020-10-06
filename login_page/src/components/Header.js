@@ -13,9 +13,10 @@ const Header = () => {
 export default Header;
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-    }
+  container: {
+    flex: 1,
+    // padding: 3,
+  },
   header: {
     textAlign: 'center',
     fontSize: 30,
@@ -25,6 +26,8 @@ const styles = StyleSheet.create({
   img: {
     width: 300,
     resizeMode: 'contain',
+    margin: -70,
     alignSelf: 'center',
+    // margin: 5,
   },
 });

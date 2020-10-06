@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 
-const Input = () => {
+const Input = ({placeholder, keyboardType, textContentType}) => {
+  const [text, setText] = useState('');
+  const onChange = (textValue) => setText(textValue);
   return (
-    <View>
-      <TextInput placeholder="Enter your Email" />
-      <TextInput placeholder="Enter your password" />
+    <View style={styles.input}>
+      <TextInput
+        style={styles.textInput}
+        placeholder={placeholder}
+        // value={text}
+        keyboardType={keyboardType}
+        textContentType={textContentType}
+        value={text}
+        // autoFocus={true}
+        onChangeText={onChange}
+      />
     </View>
   );
 };
@@ -13,7 +23,11 @@ const Input = () => {
 export default Input;
 
 const styles = StyleSheet.create({
-    email:{
-        backgroundColor:'white',
-      borderWidth:1,
+  textInput: {
+    // flex: 1,
+    backgroundColor: 'white',
+    margin: 20,
+    borderRadius: 10,
+    padding: 10,
+  },
 });
