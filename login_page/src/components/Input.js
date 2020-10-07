@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
-// import Icon from 'react-native-vector-icons/dist/FontAwesome';
-
 const Input = ({
   placeholder,
   keyboardType,
