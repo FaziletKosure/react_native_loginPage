@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     margin: -120,
     alignSelf: 'center',
-   
+  },
 });
