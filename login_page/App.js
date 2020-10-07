@@ -5,6 +5,7 @@ import {
   View,
   KeyboardAvoidingView,
   ScrollView,
+  Platform,
 } from 'react-native';
 import Header from './src/components/Header';
 import Input from './src/components/Input';
@@ -31,7 +32,8 @@ const App = () => {
             />
           </View>
 
-          <Button />
+          <Button myTitle="Login" />
+          <Button myTitle="Sign up" />
           <Text></Text>
         </ScrollView>
       </KeyboardAvoidingView>

@@ -5,9 +5,8 @@ const Input = ({placeholder, keyboardType, textContentType}) => {
   const [text, setText] = useState('');
   const onChange = (textValue) => setText(textValue);
   return (
-    <View style={styles.input}>
+    <View style={styles.textInput}>
       <TextInput
-        style={styles.textInput}
         placeholder={placeholder}
         // value={text}
         keyboardType={keyboardType}
@@ -24,10 +23,10 @@ export default Input;
 
 const styles = StyleSheet.create({
   textInput: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: 'white',
-    margin: 20,
+    margin: 10,
     borderRadius: 10,
-    padding: 10,
+    padding: 5,
   },
 });
