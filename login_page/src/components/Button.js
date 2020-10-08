@@ -22,8 +22,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 15,
     alignItems: 'center',
-    borderRadius: 5,
-    margin: 5,
+    justifyContent: 'center',
+    borderRadius: 10,
+    margin: 10,
+    height: 45,
   },
   textStyle: {
     color: 'white',

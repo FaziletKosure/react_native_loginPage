@@ -8,20 +8,42 @@ import {
   ScrollView,
   Platform,
   Alert,
+  Switch,
 } from 'react-native';
 import Header from './src/components/Header';
 import Input from './src/components/Input';
 import Button from './src/components/Button';
 
 const App = () => {
-  const iconEnv = <Icon name="envelope" size={15} color="black" />;
-  const iconpas = <Icon name="unlock-alt" size={15} color="black" />;
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const switchButton = (
+    <View style={styles.containerSwitch}>
+      <Switch
+        trackColor={{false: '#767577', true: '#80cbc4'}}
+        thumbColor={isEnabled ? '#546e7a' : '#80cbc4'}
+        ios_backgroundColor="#3E3E3E"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+    </View>
+  );
+  //Icon
+  const iconEnv = <Icon name="envelope" size={17} color="black" />;
+  const iconpas = <Icon name="unlock-alt" size={17} color="black" />;
   const [text, setText] = useState('');
   const [password, setPassword] = useState('');
   const onChangeMail = (textValue) => setText(textValue);
   const onChangePas = (passwordValue) => setPassword(passwordValue);
+  const go = (email) => {
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    reg.test(email) === true
+      ? Alert.alert('success')
+      : Alert.alert('Invalid email!');
+  };
 
   const onLogin = (email, pass) => {
+    email && pass && go(email);
     if (!email) {
       Alert.alert('Error', 'Please enter an email ', [{text: 'Ok'}], {
         cancelable: true,
@@ -52,14 +74,25 @@ const App = () => {
               name={iconEnv}
             />
             <Input
-              placeholder="Enter your password..."
+              placeholder="Enter password..."
               keyboardType="default"
               textContentType="password"
               text={password}
               onChange={onChangePas}
               name={iconpas}
+              secureTextEntry={!isEnabled}
+              switchButton={switchButton}
             />
           </View>
+          <Text
+            style={{
+              alignSelf: 'flex-end',
+              color: 'white',
+              fontWeight: 'bold',
+              marginRight: 20,
+            }}>
+            Forget password?
+          </Text>
 
           <Button
             myTitle="Login"
@@ -85,10 +118,14 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     backgroundColor: '#80cbc4',
   },
   icon: {
     alignItems: 'center',
+  },
+  containerSwitch: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
 });
